@@ -1,0 +1,67 @@
+---
+layout: default
+title: Dealing with data for non-programmers.
+description: The visual handbook that helps non-programmers deal with data.
+featured_image: /images/social.jpg
+---
+
+<section class="intro">
+
+	<!-- Commenting this out because I don't need it -->
+	<!-- <div class="wrap">
+
+		<h2>Welcome to the Data Handbook website.</h2>
+		<p>Learn to deal with data better.</p>
+
+	</div> -->
+
+</section>
+
+<section class="portfolio">
+
+	<div class="content-wrap portfolio-wrap">
+
+		{% for project in site.projects reversed %}
+
+		<div class="portfolio-item">
+
+			<!-- Commenting this out to disable the link -->
+			<!-- <a class="portfolio-item__link" href="{{ project.url | relative_url }}"> -->
+			<!-- Now that this is also outcomented - there is no overlay left - which if fine for main page -->
+			<!-- <a class="portfolio-item__link"> -->
+
+				<div class="portfolio-item__image">
+					<img src="{{ project.featured_image | relative_url }}" alt="{{ project.title }}">
+				</div>
+
+				<div class="portfolio-item__content">
+					<div class="portfolio-item__info">
+						<h2 class="portfolio-item__title">{{ project.title }}</h2>
+						<p class="portfolio-item__subtitle">{{ project.subtitle }}</p>
+					</div>
+				</div>
+
+			</a>
+
+		</div>
+
+		{% endfor %}
+
+	</div>
+
+</section>
+
+
+<!-- custom signup section self added -->
+<section class="signup">
+
+	<!-- CSS is in _basics.scss page  -->
+	<div class="band">
+
+		<div class="signup_button">
+		  <a href="https://www.google.com" class="signup_link">Download a free sample</a>
+		</div>
+
+	</div>
+
+</section>
