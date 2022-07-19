@@ -4,6 +4,20 @@
 
 <head>
 
+	<!-- Analytics Code -->
+	<!-- {% if site.data.settings.advanced_settings.analytics_code %}
+	{{ site.data.settings.advanced_settings.analytics_code }}
+	{% endif %} -->
+
+	<!-- Self added google analytics code -->
+	{% include google-analytics.html %}
+	{% include google-tag-manager_head.liquid %}
+
+	{% if site.data.settings.advanced_settings.header_js %}
+	<!-- Extra Header JS Code -->
+	{{ site.data.settings.advanced_settings.header_js }}
+	{% endif %}
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -42,16 +56,6 @@
 	<style>{{ site.data.settings.advanced_settings.custom_styles }}</style>
 	{% endif %}
 
-	{% if site.data.settings.advanced_settings.analytics_code %}
-	<!-- Analytics Code -->
-	{{ site.data.settings.advanced_settings.analytics_code }}
-	{% endif %}
-
-	{% if site.data.settings.advanced_settings.header_js %}
-	<!-- Extra Header JS Code -->
-	{{ site.data.settings.advanced_settings.header_js }}
-	{% endif %}
-
 </head>
 
 
@@ -77,8 +81,10 @@
 	</div>
 
 
-	{% include footer.html %}
+	<!-- Add cookie consent for analytics -->
+	{% include cookie-consent.html %}
 
+	{% include footer.html %}
 
 	<!-- Javascript Assets -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -89,7 +95,6 @@
 	<!-- Extra Footer JS Code -->
 	{{ site.data.settings.advanced_settings.footer_js }}
 	{% endif %}
-
 
 </body>
 
