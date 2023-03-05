@@ -27,7 +27,7 @@ Let's start by writing a simple test for a function that adds two numbers:
 <img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;"/>
 
 
-<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;" style="float: left;"/>
+<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;" style="position: absolute; align: left;"/>
 
 In this example, we define a function called add_numbers that takes two arguments and returns their sum. We then define a test function called test_add_numbers using the pytest naming convention. The test function uses the assert keyword to check that add_numbers(2, 3) returns 5. If the assertion fails, pytest will report an error.
 
@@ -61,27 +61,21 @@ This output shows that pytest has found and run one test, and that the test has 
 ## Testing exceptions
 Sometimes you want to test that a function raises an exception under certain conditions. Here's an example of how to do that in pytest:
 
-![Code2](/images/article_images/python-unit-testing/code2.PNG)
-
-<img src="/images/article_images/python-unit-testing/code2.PNG" width="200"/>
-
 <img src="/images/article_images/python-unit-testing/code2.PNG"/>
 
 In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
 
 
-```Python3
-1 + 1 # Adding two numbers
+```Python
+import pandas
+print('hello world')
+```
 
+```bash
+import pandas
+print('hello world')
 ```
 
 ## How to use
 
 That's all there is to it! Now the question is: when do I create test? The answer is: always! Every time that you create a function, which is like building an new piece of Python functionality, you also build out a test.
-
-
-<pre>
-  <code class="python">
-    print('hello world')
-  </code>
-</pre>
