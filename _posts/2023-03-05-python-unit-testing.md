@@ -5,15 +5,18 @@ description: How to apply unit tests in Python.
 featured_image: '/images/python_logo_extras.png'
 ---
 
-# Unit testing in Python
-
 Unit testing is an essential part of software development, and pytest is a popular testing framework in Python. In this article, we'll cover the basics of unit testing with pytest and show you how to write effective tests.
 
 
 ## Setting up pytest
 First, we need to install pytest. You can do this using pip:
 
-<img src="/images/article_images/python-unit-testing/pip-install-pytest.PNG" width="200"/>
+```bash
+pip install pytest
+```
+
+
+<img src="/images/article_images/python-unit-testing/pip-install-pytest.PNG" width="200;"/>
 
 After installing pytest, you can create a test file with the following naming convention: test_<filename>.py. This is important as pytest will look for files with this naming convention when running tests.
 
@@ -21,7 +24,10 @@ After installing pytest, you can create a test file with the following naming co
 Let's start by writing a simple test for a function that adds two numbers:
 
 
-<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%"/>
+<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;"/>
+
+
+<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;" style="float: left;"/>
 
 In this example, we define a function called add_numbers that takes two arguments and returns their sum. We then define a test function called test_add_numbers using the pytest naming convention. The test function uses the assert keyword to check that add_numbers(2, 3) returns 5. If the assertion fails, pytest will report an error.
 
@@ -59,8 +65,23 @@ Sometimes you want to test that a function raises an exception under certain con
 
 <img src="/images/article_images/python-unit-testing/code2.PNG" width="200"/>
 
+<img src="/images/article_images/python-unit-testing/code2.PNG"/>
+
 In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
+
+
+```Python3
+1 + 1 # Adding two numbers
+
+```
 
 ## How to use
 
 That's all there is to it! Now the question is: when do I create test? The answer is: always! Every time that you create a function, which is like building an new piece of Python functionality, you also build out a test.
+
+
+<pre>
+  <code class="python">
+    print('hello world')
+  </code>
+</pre>
