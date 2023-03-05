@@ -11,7 +11,7 @@ Unit testing is an essential part of software development, and pytest is a popul
 ## Setting up pytest
 First, we need to install pytest. You can do this using pip:
 
-```console
+```terminal
 pip install pytest
 ```
 
@@ -22,7 +22,6 @@ Let's start by writing a simple test for a function that adds two numbers:
 
 
 ```python
-# python code
 def add_numbers(a, b):
     return a + b
 
@@ -60,7 +59,7 @@ This output shows that pytest has found and run one test, and that the test has 
 ## Testing exceptions
 Sometimes you want to test that a function raises an exception under certain conditions. Here's an example of how to do that in pytest:
 
-```py
+```python
 import pytest
 
 def divide(a, b):

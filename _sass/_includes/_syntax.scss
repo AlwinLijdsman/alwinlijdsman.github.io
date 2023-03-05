@@ -1,9 +1,9 @@
 .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f0f0f0; }
+.highlight  { background: #F6F3EC; }
 .highlight .c { color: #60a0b0; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #007020; font-weight: bold } /* Keyword */
-.highlight .o { color: #666666 } /* Operator */
+.highlight .o { color: #800080 } /* Operator */
 .highlight .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #007020 } /* Comment.Preproc */
@@ -27,7 +27,7 @@
 .highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #902000 } /* Keyword.Type */
 .highlight .m { color: #40a070 } /* Literal.Number */
-.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .s { color: #902000 } /* Literal.String */
 .highlight .na { color: #4070a0 } /* Name.Attribute */
 .highlight .nb { color: #007020 } /* Name.Builtin */
 .highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
@@ -35,7 +35,7 @@
 .highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
 .highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
 .highlight .ne { color: #007020 } /* Name.Exception */
-.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nf { color: #0044DD } /* Name.Function */
 .highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
 .highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
 .highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
@@ -67,3 +67,37 @@
 .highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
 .highlight .vm { color: #bb60d5 } /* Name.Variable.Magic */
 .highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+// Added as text to add "terminal" code blocks
+$terminal-window-height: 30px;
+
+.language-terminal {
+  position: relative;
+  margin-bottom: 1.5em;
+  padding: calc(#{$terminal-window-height} + 1em) 1em 1em;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 0.25em 1em rgba($base-color, 0.25);
+  background-color: $base-color;
+
+  &::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: (0.5 * $terminal-window-height) 0;
+    background: mix($base-color, #fff, 25%);
+    color: mix($base-color, #fff, 50%);
+    font-size: (2 * $terminal-window-height);
+    line-height: 0;
+    text-indent: (0.5 * $terminal-window-height);
+  }
+
+  .highlight {
+    margin: 0;
+    padding: 0;
+    background-color: initial;
+    color: #fff;
+  }
+}
