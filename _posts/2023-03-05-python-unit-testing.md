@@ -12,6 +12,7 @@ Unit testing is an essential part of software development, and pytest is a popul
 First, we need to install pytest. You can do this using pip:
 
 ```bash
+# cmd/bash command
 pip install pytest
 ```
 
@@ -24,10 +25,14 @@ After installing pytest, you can create a test file with the following naming co
 Let's start by writing a simple test for a function that adds two numbers:
 
 
-<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;"/>
+```bash
+# python code
+def add_numbers(a, b):
+    return a + b
 
-
-<img src="/images/article_images/python-unit-testing/code1.PNG" width="60%;" style="position: absolute; align: left;"/>
+def test_add_numbers():
+    assert add_numbers(2, 3) == 5
+```
 
 In this example, we define a function called add_numbers that takes two arguments and returns their sum. We then define a test function called test_add_numbers using the pytest naming convention. The test function uses the assert keyword to check that add_numbers(2, 3) returns 5. If the assertion fails, pytest will report an error.
 
@@ -50,8 +55,6 @@ Pytest will automatically detect and run any tests in files with the test_<filen
 
 This output shows that pytest has found and run one test, and that the test has passed.
 
-
-
 ---
 
 **Tip**: You don't have to come up with writing tests yourself. Once you have created your function, just give the function to ChatGPT and ask ChatGPT to write some tests for you. This can save a lot of time!
@@ -66,14 +69,18 @@ Sometimes you want to test that a function raises an exception under certain con
 In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
 
 
-```Python
-import pandas
-print('hello world')
-```
-
 ```bash
-import pandas
-print('hello world')
+# python code
+import pytest
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
+
+def test_divide_by_zero():
+    with pytest.raises(ValueError):
+        divide(1, 0)
 ```
 
 ## How to use
