@@ -30,12 +30,7 @@ def test_add_numbers():
 
 In this example, we define a function called add_numbers that takes two arguments and returns their sum. We then define a test function called test_add_numbers using the pytest naming convention. The test function uses the assert keyword to check that add_numbers(2, 3) returns 5. If the assertion fails, pytest will report an error.
 
-|---|
-**Tip**: If you are new to Python programming and you need
-a refresher on functions: Take a look at the
-*Python basics - Functions* section in the Data Handbook:
-https://www.datahandbook.site/
-
+| **Tip** : If you are new to Python programming and you need a refresher on functions: Take a look at the *Python basics - Functions*  section in the Data Handbook: https://www.datahandbook.site/ |
 |---|
 
 
@@ -54,7 +49,8 @@ This output shows that pytest has found and run one test, and that the test has 
 
 ---
 
-**Tip**: You don't have to come up with writing tests yourself. Once you have created your function, just give the function to ChatGPT and ask ChatGPT to write some tests for you. This can save a lot of time!
+| **Tip** : You don't have to come up with writing tests yourself. Once you have created your function, just give the function to ChatGPT and ask ChatGPT to write some tests for you. This can save a lot of time! |
+|---|
 
 ---
 
