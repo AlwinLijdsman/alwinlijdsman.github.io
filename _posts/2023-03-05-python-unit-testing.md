@@ -56,7 +56,8 @@ This output shows that pytest has found and run one test, and that the test has 
 Sometimes you want to test that a function raises an exception under certain conditions. Here's an example of how to do that in pytest:
 
 ![Code2](/images/article_images/python-unit-testing/code2.PNG)
-<img src="/images/article_images/python-unit-testing/code2.PNG" width="60%"/>
+
+<img src="/images/article_images/python-unit-testing/code2.PNG" width="200"/>
 
 In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
 
