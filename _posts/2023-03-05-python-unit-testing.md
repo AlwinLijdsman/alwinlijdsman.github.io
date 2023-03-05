@@ -11,13 +11,9 @@ Unit testing is an essential part of software development, and pytest is a popul
 ## Setting up pytest
 First, we need to install pytest. You can do this using pip:
 
-```bash
-# cmd/bash command
+```console
 pip install pytest
 ```
-
-
-<img src="/images/article_images/python-unit-testing/pip-install-pytest.PNG" width="200;"/>
 
 After installing pytest, you can create a test file with the following naming convention: test_<filename>.py. This is important as pytest will look for files with this naming convention when running tests.
 
@@ -25,7 +21,7 @@ After installing pytest, you can create a test file with the following naming co
 Let's start by writing a simple test for a function that adds two numbers:
 
 
-```bash
+```python
 # python code
 def add_numbers(a, b):
     return a + b
@@ -64,13 +60,7 @@ This output shows that pytest has found and run one test, and that the test has 
 ## Testing exceptions
 Sometimes you want to test that a function raises an exception under certain conditions. Here's an example of how to do that in pytest:
 
-<img src="/images/article_images/python-unit-testing/code2.PNG"/>
-
-In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
-
-
-```bash
-# python code
+```py
 import pytest
 
 def divide(a, b):
@@ -82,6 +72,10 @@ def test_divide_by_zero():
     with pytest.raises(ValueError):
         divide(1, 0)
 ```
+
+In this example, we define a function called divide that takes two arguments and returns their quotient. If the second argument is zero, the function raises a ValueError. We then define a test function called test_divide_by_zero that uses the pytest.raises context manager to check that calling divide(1, 0) raises a ValueError.
+
+
 
 ## How to use
 
