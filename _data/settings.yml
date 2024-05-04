@@ -10,8 +10,8 @@ menu_settings:
   menu_items:
     - title: 'Home'  # is projects folder
       url: '/'
-    - title: 'Extras'  # is extras folder
-      url: '/blog/'
+    # - title: 'Extras'  # is extras folder
+    #   url: '/blog/'
     - title: 'About'
       url: '/about'
 
