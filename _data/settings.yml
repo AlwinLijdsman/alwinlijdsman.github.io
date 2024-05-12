@@ -13,11 +13,11 @@ menu_settings:
     # - title: 'Extras'  # is extras folder
     #   url: '/blog/'
     - title: 'Learning'
-      url: '/learning/'
+      url: '/learning'
     - title: 'Workflow'
-      url: '/workflow/'
+      url: '/workflow'
     - title: 'Order'
-      url: '/order/'
+      url: '/order'
     - title: 'About'
       url: '/about'
 

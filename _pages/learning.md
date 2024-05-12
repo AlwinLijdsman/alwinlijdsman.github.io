@@ -1,8 +1,9 @@
 ---
-layout: page
-title: How to learn?
+title: About the author
+subtitle: ''
 description: A collection of learning materials and resources to help you understand data better.
 ---
+
 The Data Handbook is written as a work of reference, not as a primary source to learn a new tool. Why? Because there are already many excellent books and wonderful courses dedicated to learning any of the tools described in this handbook. This page includes all the links referenced in the *How to learn* sections of the Data Handbook.
 If you are new to any of the tools mentioned, I recommend completing these courses first and after that using the Data Handbook as a work of reference or cheat sheet when you are dealing with data.
 
