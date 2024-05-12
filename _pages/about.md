@@ -1,12 +1,8 @@
 ---
-title: About the author and contact
+title: About the author
 subtitle: ''
 description: ''
-featured_image: /images/alwin_picture.png
 ---
-
-
-
 
 Hi,
 
