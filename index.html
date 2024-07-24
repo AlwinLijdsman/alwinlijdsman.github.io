@@ -98,20 +98,22 @@ featured_image: /images/social.jpg
 
 		// Function to open modal
 		function openModal() {
-		event.preventDefault(); // Prevent the default anchor behavior
-		signupModal.style.display = 'block';
+			event.preventDefault(); // Prevent the default anchor behavior
+			signupModal.style.display = 'block';
+			event.stopPropagation(); // Prevent the event from propagating to other handlers
 		}
 
 		// Function to close modal
 		function closeModal() {
-		signupModal.style.display = 'none';
+			signupModal.style.display = 'none';
 		}
 
 		// Click event to open modal
 		signupLink.addEventListener('click', function(event) {
-		event.preventDefault();
-		event.stopPropagation(); // Prevent the event from propagating to other handlers
-		openModal();
+			if (event.target && event.target.id === 'responsive-signup-link') {
+				event.preventDefault();
+				openModal();
+			}
 		});
 
 		// Click event to close modal
