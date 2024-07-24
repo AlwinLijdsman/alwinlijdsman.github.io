@@ -1,5 +1,5 @@
 ---
-title: About the author
+title: How to learn
 subtitle: ''
 description: A collection of learning materials and resources to help you understand data better.
 ---
