@@ -136,45 +136,73 @@ featured_image: /images/social.jpg
 				email: email
 			};
 
-			// Make the HTTP request to the Azure Function
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'https://datahandbookfunctions.azurewebsites.net/api/send_email?code=hjaty-hYQqvyh8sMAzHydn52RN-q3AiDETtVCoK5dJpOAzFuD7R1ng%3D%3D', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === 4) {
-					var responseCode = xhr.status;
-					var form = document.getElementById('signup-form');
-					var thankYouMessage = document.getElementById('thank-you-message');
-					var submittedEmailSpan = document.getElementById('submitted-email');
+		// 	// Make the HTTP request to the Azure Function
+		// 	var xhr = new XMLHttpRequest();
+		// 	xhr.open('POST', 'https://datahandbookfunctions.azurewebsites.net/api/send_email?code=hjaty-hYQqvyh8sMAzHydn52RN-q3AiDETtVCoK5dJpOAzFuD7R1ng%3D%3D', true);
+		// 	xhr.setRequestHeader('Content-Type', 'application/json');
+		// 	xhr.onreadystatechange = function() {
+		// 		if (xhr.readyState === 4) {
+		// 			var responseCode = xhr.status;
+		// 			var form = document.getElementById('signup-form');
+		// 			var thankYouMessage = document.getElementById('thank-you-message');
+		// 			var submittedEmailSpan = document.getElementById('submitted-email');
 
-					// Start the fade out effect for the form
-					form.style.opacity = 0;
+		// 			// Start the fade out effect for the form
+		// 			form.style.opacity = 0;
 
-					// Wait for the fade out effect to finish before showing the thank you message
-					setTimeout(function() {
-						// Hide the form (to prevent interaction while it's invisible)
-						form.style.display = 'none';
+		// 			// Wait for the fade out effect to finish before showing the thank you message
+		// 			setTimeout(function() {
+		// 				// Hide the form (to prevent interaction while it's invisible)
+		// 				form.style.display = 'none';
 
-						// Prepare the thank you message to be displayed
-						thankYouMessage.style.display = 'block';
-						setTimeout(function() {
-							// Start the fade in effect for the thank you message
-							thankYouMessage.style.opacity = 1;
-						}, 40); // Slight delay to ensure the display property has taken effect
+		// 				// Prepare the thank you message to be displayed
+		// 				thankYouMessage.style.display = 'block';
+		// 				setTimeout(function() {
+		// 					// Start the fade in effect for the thank you message
+		// 					thankYouMessage.style.opacity = 1;
+		// 				}, 1); // Slight delay to ensure the display property has taken effect
 
-						if (responseCode === 200) {
-							// Update the email in the thank you message
-							submittedEmailSpan.textContent = email;
-						} else if (responseCode === 500) {
-							// Update the thank you message with the error message
-							thankYouMessage.innerHTML = '<h2>Something went wrong.</h2>' +
-														'<p>Please contact me directly at <a href="mailto:alwin@datahandbook.email">alwin@datahandbook.email</a> and I will send you the sample directly. Thank you!</p>';
-						}
-					}, 1); // This should match the duration of the CSS transition
+		// 				if (responseCode === 200) {
+		// 					// Update the email in the thank you message
+		// 					submittedEmailSpan.textContent = email;
+		// 				} else if (responseCode === 500) {
+		// 					// Update the thank you message with the error message
+		// 					thankYouMessage.innerHTML = '<h2>Something went wrong.</h2>' +
+		// 												'<p>Please contact me directly at <a href="mailto:alwin@datahandbook.email">alwin@datahandbook.email</a> and I will send you the sample directly. Thank you!</p>';
+		// 				}
+		// 			}, 1); // This should match the duration of the CSS transition
+		// 		}
+		// 	};
+		// 	xhr.send(JSON.stringify(data));
+		// });
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'https://datahandbookfunctions.azurewebsites.net/api/send_email?code=hjaty-hYQqvyh8sMAzHydn52RN-q3AiDETtVCoK5dJpOAzFuD7R1ng%3D%3D', true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === 4) {
+				var responseCode = xhr.status;
+				var form = document.getElementById('signup-form');
+				var thankYouMessage = document.getElementById('thank-you-message');
+				var submittedEmailSpan = document.getElementById('submitted-email');
+
+				// Hide the form immediately to prevent interaction
+				form.style.display = 'none';
+
+				// Prepare the thank you message to be displayed
+				thankYouMessage.style.display = 'block';
+				thankYouMessage.style.opacity = 1;
+
+				if (responseCode === 200) {
+					// Update the email in the thank you message
+					submittedEmailSpan.textContent = email;
+				} else if (responseCode === 500) {
+					// Update the thank you message with the error message
+					thankYouMessage.innerHTML = '<h2>Something went wrong.</h2>' +
+												'<p>Please contact me directly at <a href="mailto:alwin@datahandbook.email">alwin@datahandbook.email</a> and I will send you the sample directly. Thank you!</p>';
 				}
-			};
-			xhr.send(JSON.stringify(data));
-		});
+			}
+		};
+		xhr.send(JSON.stringify(data));
 
 		// Click event to close modal when clicking outside of the modal content
 		window.addEventListener('click', function(event) {
