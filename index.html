@@ -110,6 +110,7 @@ featured_image: /images/social.jpg
 		// Click event to open modal
 		signupLink.addEventListener('click', function(event) {
 		event.preventDefault();
+		event.stopPropagation(); // Prevent the event from propagating to other handlers
 		openModal();
 		});
 
