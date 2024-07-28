@@ -74,11 +74,11 @@
 			var thisTarget = $(this).attr('href');
 
 			// If we don't want to use ajax, or the link is an anchor/mailto/tel
-			if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
+			// if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
 
-				// Use the given link
-				window.location = thisTarget;
-			}
+			// 	// Use the given link
+			// 	window.location = thisTarget;
+			// }
 
 			// If link is handled by some JS action – e.g. fluidbox
 			else if ( $(this).is('.gallery__item__link') ) {
@@ -304,17 +304,17 @@
 		// For each iframe
 		$('.single iframe').each( function() {
 
-			// If it's YouTube or Vimeo
-			if ( $(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0 ) {
+			// // If it's YouTube or Vimeo
+			// if ( $(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0 ) {
 
-				var width = $(this).attr('width');
-				var height = $(this).attr('height');
-				var ratio = (height/width)*100;
+			// 	var width = $(this).attr('width');
+			// 	var height = $(this).attr('height');
+			// 	var ratio = (height/width)*100;
 
-				// Wrap in video container
-				$(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
+			// 	// Wrap in video container
+			// 	$(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
 
-			}
+			// }
 
 		});
 
