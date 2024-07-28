@@ -124,14 +124,14 @@
         });
 
         // Wrap iframes (videos) with a div for responsive aspect ratio
-        $('.single iframe').each(function() {
-            if ($(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0) {
-                var width = $(this).attr('width');
-                var height = $(this).attr('height');
-                var ratio = (height / width) * 100;
-                $(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
-            }
-        });
+        // $('.single iframe').each(function() {
+        //     if ($(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0) {
+        //         var width = $(this).attr('width');
+        //         var height = $(this).attr('height');
+        //         var ratio = (height / width) * 100;
+        //         $(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
+        //     }
+        // });
 
         // Wrap tables with a div for responsive scrolling
         $('.single table').each(function() {
@@ -158,22 +158,22 @@
     });
 
     // Handle AJAX loading for links
-    if ($('body').hasClass('ajax-loading')) {
-        $(document).on('click', 'a', function(event) {
-            event.preventDefault();
-            var thisTarget = $(this).attr('href');
-            if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
-                window.location = thisTarget;
-            } else if ($(this).is('.gallery__item__link')) {
-                // Handled by other JS
-            } else if (thisTarget.indexOf('http') >= 0) {
-                window.open(thisTarget, '_blank');
-            } else {
-                navTarget = thisTarget;
-                History.pushState(null, docTitle, thisTarget);
-            }
-        });
-    }
+    // if ($('body').hasClass('ajax-loading')) {
+    //     $(document).on('click', 'a', function(event) {
+    //         event.preventDefault();
+    //         var thisTarget = $(this).attr('href');
+    //         if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
+    //             window.location = thisTarget;
+    //         } else if ($(this).is('.gallery__item__link')) {
+    //             // Handled by other JS
+    //         } else if (thisTarget.indexOf('http') >= 0) {
+    //             window.open(thisTarget, '_blank');
+    //         } else {
+    //             navTarget = thisTarget;
+    //             History.pushState(null, docTitle, thisTarget);
+    //         }
+    //     });
+    // }
 
     // Run page functions on load
     pageFunctions();
