@@ -4,19 +4,6 @@
 //
 //
 
-// added by me
-function openModal() {
-    var signupModal = document.getElementById('signup-modal');
-    signupModal.style.display = 'block';
-}
-
-// Event delegation for the signup link
-$(document).on('click', '#responsive-signup-link', function(event) {
-    event.preventDefault(); // Prevent the default anchor behavior
-    openModal(); // Call your function to open the modal
-});
-
-
 (function ($) {
 	'use strict';
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navigation
@@ -163,8 +150,6 @@ $(document).on('click', '#responsive-signup-link', function(event) {
 		$('.active-link').removeClass('active-link');
 
 		$('a[href="' + navTarget + '"]').addClass('active-link');
-
-
 
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Galleries
 

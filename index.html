@@ -112,15 +112,15 @@ featured_image: /images/social.jpg
 		// 	event.preventDefault();
 		// 	openModal();
 		// });
-		// $(document).ready(function() {
-		// 	setTimeout(function() {
-		// 		$('#responsive-signup-link').off('click').on('click', function(event) {
-		// 			event.preventDefault(); // Prevent the default anchor behavior
-		// 			event.stopImmediatePropagation(); // Prevent other handlers from executing
-		// 			openModal(); // Call your function to open the modal
-		// 		});
-		// 	}, 500); // Adjust the timeout as needed
-		// });
+		$(document).ready(function() {
+			setTimeout(function() {
+				$('#responsive-signup-link').off('click').on('click', function(event) {
+					event.preventDefault(); // Prevent the default anchor behavior
+					event.stopImmediatePropagation(); // Prevent other handlers from executing
+					openModal(); // Call your function to open the modal
+				});
+			}, 500); // Adjust the timeout as needed
+		});
 
 		// Click event to close modal
 		closeButton.addEventListener('click', function() {
