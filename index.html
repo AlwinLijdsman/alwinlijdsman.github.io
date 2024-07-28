@@ -108,14 +108,14 @@ featured_image: /images/social.jpg
 		}
 
 		// Click event to open modal
-		// signupLink.addEventListener('click', function(event) {
-		// 	event.preventDefault();
-		// 	openModal();
-		// });
-		$(document).on('click', '#responsive-signup-link', function(event) {
+		signupLink.addEventListener('click', function(event) {
 			event.preventDefault();
 			openModal();
 		});
+		// $(document).on('click', '#responsive-signup-link', function(event) {
+		// 	event.preventDefault();
+		// 	openModal();
+		// });
 
 		// Click event to close modal
 		closeButton.addEventListener('click', function() {
