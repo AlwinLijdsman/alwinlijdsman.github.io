@@ -4,13 +4,21 @@
 //
 //
 
+// added by me
+function openModal() {
+    var signupModal = document.getElementById('signup-modal');
+    signupModal.style.display = 'block';
+}
+
+// Event delegation for the signup link
+$(document).on('click', '#responsive-signup-link', function(event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    openModal(); // Call your function to open the modal
+});
 
 
 (function ($) {
 	'use strict';
-
-
-
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navigation
 
 	// Global vars
@@ -118,12 +126,6 @@
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page load
 
 	function pageFunctions() {
-
-		// This was added my me - remove if does not work
-		$('#responsive-signup-link').off('click').on('click', function(event) {
-			event.preventDefault(); // Prevent the default anchor behavior
-			openModal(); // Call your function to open the modal
-		});
 
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Show content
 
