@@ -1,412 +1,412 @@
-// //
-// //
-// // Duet JS
-// //
-// //
+//
+//
+// Duet JS
+//
+//
 
 
 
-// (function ($) {
-// 	'use strict';
+(function ($) {
+	'use strict';
 
 
 
-// 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navigation
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Navigation
 
-// 	// Global vars
-// 	var navTarget = $('body').attr('data-page-url');
-// 	var docTitle = document.title;
-// 	var History = window.History;
+	// Global vars
+	var navTarget = $('body').attr('data-page-url');
+	var docTitle = document.title;
+	var History = window.History;
 
-// 	// State change event
-// 	History.Adapter.bind(window,'statechange',function(){
-// 		var state = History.getState();
-// 		// console.log(state);
+	// State change event
+	History.Adapter.bind(window,'statechange',function(){
+		var state = History.getState();
+		// console.log(state);
 
-// 		// Loading state
-// 		$('body').addClass('loading');
+		// Loading state
+		$('body').addClass('loading');
 
-// 		// Load the page
-// 		$('.page-loader').load( state.hash + ' .page__content', function() {
+		// Load the page
+		$('.page-loader').load( state.hash + ' .page__content', function() {
 
-// 			// Scroll to top
-// 			$( 'body, html' ).animate({
-// 				scrollTop: 0
-// 			}, 300);
+			// Scroll to top
+			$( 'body, html' ).animate({
+				scrollTop: 0
+			}, 300);
 
-// 			// Find transition time
-// 			var transitionTime = 400;
+			// Find transition time
+			var transitionTime = 400;
 
-// 			// After current content fades out
-// 			setTimeout( function() {
+			// After current content fades out
+			setTimeout( function() {
 
-// 				// Remove old content
-// 				$('.page .page__content').remove();
+				// Remove old content
+				$('.page .page__content').remove();
 
-// 				// Append new content
-// 				$('.page-loader .page__content').appendTo('.page');
+				// Append new content
+				$('.page-loader .page__content').appendTo('.page');
 
-// 				// Set page URL
-// 				$('body').attr('data-page-url', window.location.pathname);
+				// Set page URL
+				$('body').attr('data-page-url', window.location.pathname);
 
-// 				// Update navTarget
-// 				navTarget = $('body').attr('data-page-url');
+				// Update navTarget
+				navTarget = $('body').attr('data-page-url');
 
-// 				// Set page title
-// 				docTitle = $('.page__content').attr('data-page-title');
-// 				document.title = docTitle;
+				// Set page title
+				docTitle = $('.page__content').attr('data-page-title');
+				document.title = docTitle;
 
-// 				// Run page functions
-// 				pageFunctions();
+				// Run page functions
+				pageFunctions();
 
-// 			}, transitionTime);
+			}, transitionTime);
 
-// 		});
+		});
 
-// 	});
+	});
 
 
-// 	// On clicking a link
+	// On clicking a link
 
-// 	if ( $('body').hasClass('ajax-loading') ) {
+	if ( $('body').hasClass('ajax-loading') ) {
 
-// 		$(document).on('click', 'a', function (event){
+		$(document).on('click', 'a', function (event){
 
-// 			// Don't follow link
-// 			event.preventDefault();
+			// Don't follow link
+			event.preventDefault();
 
-// 			// Get the link target
-// 			var thisTarget = $(this).attr('href');
+			// Get the link target
+			var thisTarget = $(this).attr('href');
 
-// 			// If we don't want to use ajax, or the link is an anchor/mailto/tel
-// 			if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
+			// If we don't want to use ajax, or the link is an anchor/mailto/tel
+			if ($(this).hasClass('js-no-ajax') || thisTarget.indexOf('#') >= 0 || thisTarget.indexOf('mailto:') >= 0 || thisTarget.indexOf('tel:') >= 0) {
 
-// 				// Use the given link
-// 				window.location = thisTarget;
-// 			}
+				// Use the given link
+				window.location = thisTarget;
+			}
 
-// 			// If link is handled by some JS action – e.g. fluidbox
-// 			else if ( $(this).is('.gallery__item__link') ) {
+			// If link is handled by some JS action – e.g. fluidbox
+			else if ( $(this).is('.gallery__item__link') ) {
 
-// 				// Let JS handle it
-// 			}
+				// Let JS handle it
+			}
 
-// 			// If link is external
-// 			else if ( thisTarget.indexOf('http') >= 0 ) {
+			// If link is external
+			else if ( thisTarget.indexOf('http') >= 0 ) {
 
-// 				// Go to the external link
-// 				window.open(thisTarget, '_blank');
+				// Go to the external link
+				window.open(thisTarget, '_blank');
 
-// 			}
+			}
 
-// 			// If link is internal
-// 			else {
+			// If link is internal
+			else {
 
-// 				// Change navTarget
-// 				navTarget = thisTarget;
+				// Change navTarget
+				navTarget = thisTarget;
 
-// 				// Switch the URL via History
-// 				History.pushState(null, docTitle, thisTarget);
-// 			}
+				// Switch the URL via History
+				History.pushState(null, docTitle, thisTarget);
+			}
 
-// 		});
+		});
 
-// 	}
+	}
 
 
 
-// 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page load
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page load
 
-// 	function pageFunctions() {
+	function pageFunctions() {
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Show content
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Show content
 
-// 		// Wait until first image has loaded
-// 		$('.page__content').find('img:first').imagesLoaded( function() {
+		// Wait until first image has loaded
+		$('.page__content').find('img:first').imagesLoaded( function() {
 
-// 			// Portfolio grid layout
-// 			$('.portfolio-wrap').imagesLoaded( function() {
-// 				$('.portfolio-wrap').masonry({
-// 					itemSelector: '.portfolio-item',
-// 					transitionDuration: 0
-// 				});
-// 			});
+			// Portfolio grid layout
+			$('.portfolio-wrap').imagesLoaded( function() {
+				$('.portfolio-wrap').masonry({
+					itemSelector: '.portfolio-item',
+					transitionDuration: 0
+				});
+			});
 
-// 			// Blog grid layout
-// 			$('.blog-wrap').imagesLoaded( function() {
-// 				$('.blog-wrap').masonry({
-// 					itemSelector: '.blog-post',
-// 					transitionDuration: 0
-// 				});
-// 			});
+			// Blog grid layout
+			$('.blog-wrap').imagesLoaded( function() {
+				$('.blog-wrap').masonry({
+					itemSelector: '.blog-post',
+					transitionDuration: 0
+				});
+			});
 
-// 			// Show the content
-// 			$('body').removeClass('loading');
+			// Show the content
+			$('body').removeClass('loading');
 
-// 			// Hide the menu
-// 			$('body').removeClass('menu--open');
-// 		});
+			// Hide the menu
+			$('body').removeClass('menu--open');
+		});
 
 
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Active links
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Active links
 
-// 		// Switch active link states
-// 		$('.active-link').removeClass('active-link');
+		// Switch active link states
+		$('.active-link').removeClass('active-link');
 
-// 		$('a[href="' + navTarget + '"]').addClass('active-link');
+		$('a[href="' + navTarget + '"]').addClass('active-link');
 
 
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Galleries
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Galleries
 
-// 		// Destroy all existing waypoints
-// 		Waypoint.destroyAll();
+		// Destroy all existing waypoints
+		Waypoint.destroyAll();
 
-// 		// Set up count for galleries to give them unique IDs
-// 		var galleryCount = 0;
+		// Set up count for galleries to give them unique IDs
+		var galleryCount = 0;
 
-// 		// If there's a gallery
-// 		$('.gallery').each( function() {
+		// If there's a gallery
+		$('.gallery').each( function() {
 
-// 			// Get gallery element
-// 			var $this = $(this);
+			// Get gallery element
+			var $this = $(this);
 
-// 			// Add ID via count
-// 			galleryCount++;
-// 			var thisId = 'gallery-' + galleryCount;
-// 			$this.attr('id', thisId);
+			// Add ID via count
+			galleryCount++;
+			var thisId = 'gallery-' + galleryCount;
+			$this.attr('id', thisId);
 
-// 			// Gallery columns
-// 			var galleryCols = $this.attr('data-columns');
+			// Gallery columns
+			var galleryCols = $this.attr('data-columns');
 
-// 			// Set up gallery container
-// 			$this.append('<div class="gallery__wrap"></div>');
+			// Set up gallery container
+			$this.append('<div class="gallery__wrap"></div>');
 
-// 			// Add images to container
-// 			$this.children('img').each( function() {
-// 				$(this).appendTo('#' + thisId + ' .gallery__wrap');
-// 			});
+			// Add images to container
+			$this.children('img').each( function() {
+				$(this).appendTo('#' + thisId + ' .gallery__wrap');
+			});
 
-// 			// Wrap images
-// 			$this.find('.gallery__wrap img').each( function() {
-// 				var imageSrc = $(this).attr('src');
-// 				$(this).wrapAll('<div class="gallery__item"><a href="' + imageSrc + '" class="gallery__item__link"></div></div>').appendTo();
-// 			});
+			// Wrap images
+			$this.find('.gallery__wrap img').each( function() {
+				var imageSrc = $(this).attr('src');
+				$(this).wrapAll('<div class="gallery__item"><a href="' + imageSrc + '" class="gallery__item__link"></div></div>').appendTo();
+			});
 
-// 			// Wait for images to load
-// 			$this.imagesLoaded( function() {
+			// Wait for images to load
+			$this.imagesLoaded( function() {
 
-// 				// If it's a single column gallery
-// 				if ( galleryCols === '1' ) {
+				// If it's a single column gallery
+				if ( galleryCols === '1' ) {
 
-// 					// Add carousel class to gallery
-// 					$this.addClass('gallery--carousel');
+					// Add carousel class to gallery
+					$this.addClass('gallery--carousel');
 
-// 					// Add owl styles to gallery wrap
-// 					$this.children('.gallery__wrap').addClass('owl-carousel');
+					// Add owl styles to gallery wrap
+					$this.children('.gallery__wrap').addClass('owl-carousel');
 
-// 					// Use carousel
-// 					$this.children('.gallery__wrap').owlCarousel({
-// 						items: 1,
-// 						loop: true,
-// 						mouseDrag: false,
-// 						touchDrag: true,
-// 						pullDrag: false,
-// 						dots: true,
-// 						autoplay: false,
-// 						autoplayTimeout: 6000,
-// 						autoHeight: true,
-// 						animateOut: 'fadeOut'
-// 					});
+					// Use carousel
+					$this.children('.gallery__wrap').owlCarousel({
+						items: 1,
+						loop: true,
+						mouseDrag: false,
+						touchDrag: true,
+						pullDrag: false,
+						dots: true,
+						autoplay: false,
+						autoplayTimeout: 6000,
+						autoHeight: true,
+						animateOut: 'fadeOut'
+					});
 
-// 					// When scrolling over the bottom
-// 					var waypoint1 = new Waypoint({
-// 						element: document.getElementById(thisId),
-// 						handler: function(direction) {
+					// When scrolling over the bottom
+					var waypoint1 = new Waypoint({
+						element: document.getElementById(thisId),
+						handler: function(direction) {
 
-// 							if ( direction === 'down') {
+							if ( direction === 'down') {
 
-// 								// console.log('pause');
+								// console.log('pause');
 
-// 								// Pause this carousel
-// 								$this.children('.gallery__wrap').trigger('stop.owl.autoplay');
-// 							}
+								// Pause this carousel
+								$this.children('.gallery__wrap').trigger('stop.owl.autoplay');
+							}
 
-// 							if ( direction === 'up') {
+							if ( direction === 'up') {
 
-// 								// console.log('play');
+								// console.log('play');
 
-// 								// Play this carousel
-// 								$this.children('.gallery__wrap').trigger('play.owl.autoplay');
-// 							}
-// 						},
-// 						offset: '-100%'
-// 					});
+								// Play this carousel
+								$this.children('.gallery__wrap').trigger('play.owl.autoplay');
+							}
+						},
+						offset: '-100%'
+					});
 
-// 					// When scrolling over the top
-// 					var waypoint2 = new Waypoint({
-// 						element: document.getElementById(thisId),
-// 						handler: function(direction) {
+					// When scrolling over the top
+					var waypoint2 = new Waypoint({
+						element: document.getElementById(thisId),
+						handler: function(direction) {
 
-// 							if ( direction === 'down') {
+							if ( direction === 'down') {
 
-// 								// console.log('play');
+								// console.log('play');
 
-// 								// Play this carousel
-// 								$this.children('.gallery__wrap').trigger('play.owl.autoplay');
-// 							}
+								// Play this carousel
+								$this.children('.gallery__wrap').trigger('play.owl.autoplay');
+							}
 
-// 							if ( direction === 'up') {
+							if ( direction === 'up') {
 
-// 								// console.log('pause');
+								// console.log('pause');
 
-// 								// Pause this carousel
-// 								$this.children('.gallery__wrap').trigger('stop.owl.autoplay');
-// 							}
-// 						},
-// 						offset: '100%'
-// 					});
+								// Pause this carousel
+								$this.children('.gallery__wrap').trigger('stop.owl.autoplay');
+							}
+						},
+						offset: '100%'
+					});
 
-// 				}
+				}
 
-// 				else {
+				else {
 
-// 					$this.addClass('gallery--grid');
+					$this.addClass('gallery--grid');
 
-// 					// Use masonry layout
-// 					$this.children('.gallery__wrap').masonry({
-// 						itemSelector: '.gallery__item',
-// 						transitionDuration: 0
-// 					});
+					// Use masonry layout
+					$this.children('.gallery__wrap').masonry({
+						itemSelector: '.gallery__item',
+						transitionDuration: 0
+					});
 
-// 					// Init fluidbox
-// 					$this.find('.gallery__item__link').fluidbox({
-// 						loader: true
-// 					});
+					// Init fluidbox
+					$this.find('.gallery__item__link').fluidbox({
+						loader: true
+					});
 
-// 				}
+				}
 
-// 				// Show gallery once initialized
-// 				$this.addClass('gallery--on');
-// 			});
+				// Show gallery once initialized
+				$this.addClass('gallery--on');
+			});
 
-// 		});
+		});
 
 
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Images
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Images
 
-// 		$('.single p > img').each( function() {
-// 			var thisP = $(this).parent('p');
-// 			$(this).insertAfter(thisP);
-// 			$(this).wrapAll('<div class="image-wrap"></div>');
-// 			thisP.remove();
-// 		});
+		$('.single p > img').each( function() {
+			var thisP = $(this).parent('p');
+			$(this).insertAfter(thisP);
+			$(this).wrapAll('<div class="image-wrap"></div>');
+			thisP.remove();
+		});
 
 
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Videos
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Videos
 
-// 		// For each iframe
-// 		$('.single iframe').each( function() {
+		// For each iframe
+		$('.single iframe').each( function() {
 
-// 			// If it's YouTube or Vimeo
-// 			if ( $(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0 ) {
+			// If it's YouTube or Vimeo
+			if ( $(this).attr('src').indexOf('youtube') >= 0 || $(this).attr('src').indexOf('vimeo') >= 0 ) {
 
-// 				var width = $(this).attr('width');
-// 				var height = $(this).attr('height');
-// 				var ratio = (height/width)*100;
+				var width = $(this).attr('width');
+				var height = $(this).attr('height');
+				var ratio = (height/width)*100;
 
-// 				// Wrap in video container
-// 				$(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
+				// Wrap in video container
+				$(this).wrapAll('<div class="video-wrap"><div class="video" style="padding-bottom:' + ratio + '%;"></div></div>');
 
-// 			}
+			}
 
-// 		});
+		});
 
 
 
-// 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Tables
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Tables
 
-// 		$('.single table').each(function () {
-// 			$(this).wrapAll('<div class="table-wrap"></div>');
-// 		});
+		$('.single table').each(function () {
+			$(this).wrapAll('<div class="table-wrap"></div>');
+		});
 
-// 	}
+	}
 
-// 	// Run functions on load
-// 	pageFunctions();
+	// Run functions on load
+	pageFunctions();
 
 
-// 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Menu
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Menu
 
-// 	$(document).on('click', '.js-menu-toggle', function (){
+	$(document).on('click', '.js-menu-toggle', function (){
 
-// 		// If already open
-// 		if ( $('body').hasClass('menu--open') ) {
-// 			$('body').removeClass('menu--open');
-// 		}
+		// If already open
+		if ( $('body').hasClass('menu--open') ) {
+			$('body').removeClass('menu--open');
+		}
 
-// 		// If not open
-// 		else {
-// 			$('body').addClass('menu--open');
-// 		}
-// 	});
+		// If not open
+		else {
+			$('body').addClass('menu--open');
+		}
+	});
 
-// 	$(document).on('click', '.menu__list__item__link', function (){
+	$(document).on('click', '.menu__list__item__link', function (){
 
-// 		// If menu is open when you click a link on mobile
-// 		if ( $('.menu').hasClass('menu--open') ) {
-// 			$('.menu').removeClass('menu--open');
-// 		}
-// 	});
+		// If menu is open when you click a link on mobile
+		if ( $('.menu').hasClass('menu--open') ) {
+			$('.menu').removeClass('menu--open');
+		}
+	});
 
 
 
-// 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Contact Form
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Contact Form
 
-// 	// Override the submit event
-// 	$(document).on('submit', '#contact-form', function (e) {
+	// Override the submit event
+	$(document).on('submit', '#contact-form', function (e) {
 
-// 		// Clear previous classes
-// 		$('.contact-form__item--error').removeClass('contact-form__item--error');
+		// Clear previous classes
+		$('.contact-form__item--error').removeClass('contact-form__item--error');
 
-// 		// Get form elements
-// 		var emailField = $('.contact-form__input[name="email"]');
-// 		var nameField = $('.contact-form__input[name="name"]');
-// 		var messageField = $('.contact-form__textarea[name="message"]');
-// 		var gotchaField = $('.contact-form__gotcha');
+		// Get form elements
+		var emailField = $('.contact-form__input[name="email"]');
+		var nameField = $('.contact-form__input[name="name"]');
+		var messageField = $('.contact-form__textarea[name="message"]');
+		var gotchaField = $('.contact-form__gotcha');
 
-// 		// Validate email
-// 		if ( emailField.val() === '' ) {
-// 			emailField.closest('.contact-form__item').addClass('contact-form__item--error');
-// 		}
+		// Validate email
+		if ( emailField.val() === '' ) {
+			emailField.closest('.contact-form__item').addClass('contact-form__item--error');
+		}
 
-// 		// Validate name
-// 		if ( nameField.val() === '' ) {
-// 			nameField.closest('.contact-form__item').addClass('contact-form__item--error');
-// 		}
+		// Validate name
+		if ( nameField.val() === '' ) {
+			nameField.closest('.contact-form__item').addClass('contact-form__item--error');
+		}
 
-// 		// Validate message
-// 		if ( messageField.val() === '' ) {
-// 			messageField.closest('.contact-form__item').addClass('contact-form__item--error');
-// 		}
+		// Validate message
+		if ( messageField.val() === '' ) {
+			messageField.closest('.contact-form__item').addClass('contact-form__item--error');
+		}
 
-// 		// If all fields are filled, except gotcha
-// 		if ( emailField.val() !== '' && nameField.val() !== '' && messageField.val() !== '' && gotchaField.val().length === 0 ) {
+		// If all fields are filled, except gotcha
+		if ( emailField.val() !== '' && nameField.val() !== '' && messageField.val() !== '' && gotchaField.val().length === 0 ) {
 
-// 			// Submit the form!
-// 		}
+			// Submit the form!
+		}
 
-// 		else {
+		else {
 
-// 			// Stop submission
-// 			e.preventDefault();
-// 		}
+			// Stop submission
+			e.preventDefault();
+		}
 
-// 	});
+	});
 
 
 
-// }(jQuery));
+}(jQuery));
