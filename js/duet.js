@@ -119,6 +119,7 @@
 
 	function pageFunctions() {
 
+		// This was added my me - remove if does not work
 		$('#responsive-signup-link').off('click').on('click', function(event) {
 			event.preventDefault(); // Prevent the default anchor behavior
 			openModal(); // Call your function to open the modal
