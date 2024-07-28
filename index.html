@@ -112,8 +112,9 @@ featured_image: /images/social.jpg
 		// 	event.preventDefault();
 		// 	openModal();
 		// });
-		$('#responsive-signup-link').off('click').on('click', function(event) {
+		$(document).on('click', '#responsive-signup-link', function(event) {
 			event.preventDefault(); // Prevent the default anchor behavior
+			event.stopImmediatePropagation(); // Prevent other handlers from executing
 			openModal(); // Call your function to open the modal
 		});
 
