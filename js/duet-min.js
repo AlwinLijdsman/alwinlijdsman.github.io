@@ -6,6 +6,20 @@
     var docTitle = document.title;
     var History = window.History;
 
+    // Define the openModal function globally
+    window.openModal = function() {
+        var signupModal = document.getElementById('signup-modal');
+        if (signupModal) {
+            signupModal.style.display = 'block';
+        }
+    };
+
+    // Use event delegation to handle clicks on the signup link
+    $(document).on('click', '#responsive-signup-link', function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        window.openModal(); // Call the global function to open the modal
+    });
+
     // State change event for AJAX navigation
     History.Adapter.bind(window, 'statechange', function() {
         var state = History.getState();
@@ -201,4 +215,4 @@
             event.preventDefault();
         }
     });
-})(jQuery);
+})(jQuery);f
